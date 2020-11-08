@@ -211,7 +211,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRot = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 2f);
     }
 
     private void DeathUpdate()
@@ -220,7 +220,6 @@ public class EnemyController : MonoBehaviour
         {
             //gameObject.SetActive(false);
             Destroy(parent.gameObject);
-            
         }
     }
 

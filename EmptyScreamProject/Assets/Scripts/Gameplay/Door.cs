@@ -28,10 +28,13 @@ public class Door : Interactable
     public int cantEnemigos;
     public bool isInCombatRoom;
     public bool doOnce;
+
+    public bool enemyInTrigger;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
+
         for (int i = 0; i < transform.childCount; i++)
         {
             if(transform.GetChild(i).GetComponent<Trigger>())
@@ -53,6 +56,7 @@ public class Door : Interactable
         //isLocked = false;
         animator = GetComponent<Animator>();
         OnInteract += InteractDoor;
+
         if(animator)
         {
             animator.SetBool("Close", false);
@@ -74,31 +78,37 @@ public class Door : Interactable
     {
         base.Update();
 
-        if (cantEnemigos>0 && isInCombatRoom)
-        {
-            if (!doOnce)
-            {
-                doorType = DoorType.defaultDoor;
-                animator.SetBool("Close", true);
-                animator.SetBool("Open", false);
-                doOnce = true;
-            }
+        // lo dejo por si queres hacer que una puerta se cierre hasta matar cierta cantidad de enemigos
+        //if (cantEnemigos>0 && isInCombatRoom)
+        //{
+        //    if (!doOnce)
+        //    {
+        //        doorType = DoorType.defaultDoor;
+        //        animator.SetBool("Close", true);
+        //        animator.SetBool("Open", false);
+        //        doOnce = true;
+        //    }
             
-        }
-        else
-        {
-            if (doOnce)
-            {
-                doorType = DoorType.automaticDoor;
-                isOpen = false;
-                doOnce=false;
-            }
-        }
+        //}
+        //else
+        //{
+        //    if (doOnce)
+        //    {
+        //        doorType = DoorType.automaticDoor;
+        //        isOpen = false;
+        //        doOnce=false;
+        //    }
+        //}
+    }
+
+    void EnemyDiedOnTrigger()
+    {
+        enemyInTrigger = false;
     }
 
     void EnemyDied()
     {
-        cantEnemigos--;
+        Invoke("EnemyDiedOnTrigger", 1.0f);
     }
     public void InteractDoor()
     {
@@ -175,6 +185,7 @@ public class Door : Interactable
                         break;
                     case "enemy":
                         {
+                            enemyInTrigger = true;
                             if (!isOpen)
                             {
                                 animator.SetBool("Open", true);
@@ -207,7 +218,7 @@ public class Door : Interactable
                 {
                     case "Player":
                         {
-                            if (isOpen)
+                            if (isOpen && !enemyInTrigger)
                             {
                                 animator.SetBool("Close", true);
                                 animator.SetBool("Open", false);
@@ -219,6 +230,7 @@ public class Door : Interactable
                         break;
                     case "enemy":
                         {
+                            enemyInTrigger = false;
                             if (isOpen)
                             {
                                 animator.SetBool("Close", true);
@@ -226,7 +238,6 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = false;
                             }
-
                         }
                         break;
                     default:
