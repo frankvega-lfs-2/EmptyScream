@@ -152,6 +152,7 @@ public class MeleeWeapon : ItemCore
                 {
                     Debug.Log("Le pego en la nuca");
                     target.InstantStun();
+                    target.TakeMeleeDamage(damage);
                 }
                 else
                 {

@@ -52,6 +52,8 @@ public class EnemyController : MonoBehaviour
     public SphereCollider instantKOCol;
     public Rigidbody instantKORB;
     public EnemySight sight;
+    public float enemiesAlertRadius;
+    public LayerMask alertLayer;
 
     [Header("UI"), Space]
     public GameObject stunIcon;
@@ -326,6 +328,8 @@ public class EnemyController : MonoBehaviour
 
         Invoke("CreateBlood", 3.0f);
 
+        AlertEnemies();
+
         if (gameObject != null)
         {
             Destroy(parent.gameObject, deathTime);
@@ -334,6 +338,15 @@ public class EnemyController : MonoBehaviour
         if (OnEnemyDeath != null)
         {
             OnEnemyDeath();
+        }
+    }
+
+    public void AlertEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemiesAlertRadius, alertLayer);
+        foreach (var hitCollider in hitColliders)
+        {
+            hitCollider.GetComponent<EnemyController>().ChangeState(States.Follow);
         }
     }
 
