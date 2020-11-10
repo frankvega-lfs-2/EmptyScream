@@ -1131,6 +1131,7 @@ MonoBehaviour:
   cantEnemigos: 2
   isInCombatRoom: 0
   doOnce: 0
+  enemyInTrigger: 0
 --- !u!95 &156402577
 Animator:
   serializedVersion: 3
@@ -3219,11 +3220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &397467434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3907,11 +3903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &449063500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8817,11 +8808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &640633870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11669,7 +11655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeScene: 1
   quickChange: 0
-  nameOfNewScene: Blocking
+  nameOfNewScene: Demo Level
   screenToChangeTo: {fileID: 0}
 --- !u!1 &954599968
 GameObject:
@@ -12173,11 +12159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &972739707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12442,11 +12423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &1002360897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15041,11 +15017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &1186541668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15355,11 +15326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &1242812038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20352,7 +20318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accc5e438f6f99c4eb00ca9a8dfb58b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptPuerta: {fileID: 156402576}
 --- !u!65 &1881138242
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20568,11 +20533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &1911666052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21141,11 +21101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631729fe9e84e5240b0edf596d6a8f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCastLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: 10
-  isLightOnPlayer: 0
 --- !u!114 &2018438763
 MonoBehaviour:
   m_ObjectHideFlags: 0
