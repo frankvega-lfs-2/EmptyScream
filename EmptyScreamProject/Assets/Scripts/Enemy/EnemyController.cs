@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -62,6 +63,14 @@ public class EnemyController : MonoBehaviour
     [Header("Surprise Settings")]
     public bool isSurpriseEnemy;
     public GameObject activator;
+
+    [Header("Wander Settings")]
+    public Transform[] waypoints;
+    public float idleMaxTime;
+    public float idleTimer;
+
+    public int rndIndex;
+    public int previousIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +108,15 @@ public class EnemyController : MonoBehaviour
         switch (currentState)
         {
             case States.Idle:
+                if (waypoints.Length>0)
+                {
+                    idleTimer += Time.deltaTime;
+                    if (idleTimer > idleMaxTime)
+                    {
+                        ChangeState(States.Wander);
+                        idleTimer = 0;
+                    }
+                }
                 break;
             case States.Follow:
                 MovementUpdate();
@@ -138,6 +156,10 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
             case States.Wander:
+                if (agent.remainingDistance< 2f)
+                {
+                    ChangeState(States.Idle);
+                }
                 break;
             case States.Dead:
                 break;
@@ -151,11 +173,10 @@ public class EnemyController : MonoBehaviour
             FaceTarget();
             doOnce = true;
         }
-        else if (currentState != States.Dead && currentState != States.Stunned && lastState!=States.Stunned)
+        else if (currentState != States.Dead && currentState != States.Stunned && lastState!=States.Stunned && currentState != States.Wander && currentState!=States.Idle)
         {
             if (doOnce)
             {
-                Debug.Log("ahre");
                 doOnce = false;
                 
                 ChangeState(States.Follow);
@@ -248,32 +269,46 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("Idle", true);
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", false);
-                //animator.SetBool("Wander", false);
+                animator.SetBool("Wander", false);
                 break;
             case States.Follow:
+                ResumeNavMeshAgentSpeed();
                 animator.SetBool("Idle", false);
                 animator.SetBool("Follow", true);
                 animator.SetBool("Hit", false);
-                //animator.SetBool("Wander", false);
+                animator.SetBool("Wander", false);
                 agent.SetDestination(target.position);
                 break;
             case States.Hit:
                 animator.SetBool("Idle", false);
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", true);
-                //animator.SetBool("Wander", true);
+                animator.SetBool("Wander", false);
                 break;
             case States.Stunned:
                 animator.SetBool("Idle", false);
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", false);
-                //animator.SetBool("Wander", false);
+                animator.SetBool("Wander", false);
                 break;
             case States.Wander:
                 animator.SetBool("Idle", false);
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", false);
-                //animator.SetBool("Wander", true);
+                animator.SetBool("Wander", true);
+
+                if (waypoints.Length>0)
+                {
+                    agent.speed = 2;
+                    agent.acceleration = 5;
+                    previousIndex = rndIndex;
+                    rndIndex = UnityEngine.Random.Range(0, waypoints.Length);
+                    while (previousIndex==rndIndex)
+                    {
+                        rndIndex = UnityEngine.Random.Range(0, waypoints.Length);
+                    }
+                    agent.SetDestination(waypoints[rndIndex].position);
+                }
                 break;
             case States.Dead:
                 break;
