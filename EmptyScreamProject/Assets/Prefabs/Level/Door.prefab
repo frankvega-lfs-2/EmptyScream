@@ -918,6 +918,7 @@ Transform:
   - {fileID: 2877421728171727084}
   - {fileID: 2877421729976628714}
   - {fileID: 2877421729366763444}
+  - {fileID: 1453751932462109168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -971,7 +972,7 @@ MonoBehaviour:
   doorType: 1
   door: {fileID: 6111185438412492649}
   pickupsColliders: []
-  occlusionPortal: {fileID: 0}
+  occlusionPortal: {fileID: 4224316807719836537}
   isOpen: 0
   isLocked: 0
   doorTrigger: {fileID: 0}
@@ -979,6 +980,47 @@ MonoBehaviour:
   isInCombatRoom: 0
   doOnce: 0
   enemyInTrigger: 0
+--- !u!1 &6528175614473208919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1453751932462109168}
+  - component: {fileID: 4224316807719836537}
+  m_Layer: 0
+  m_Name: OC Portal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1453751932462109168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528175614473208919}
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7103323540204240250}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!41 &4224316807719836537
+OcclusionPortal:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528175614473208919}
+  m_Open: 0
+  m_Center: {x: 0.5409622, y: 1.1299706, z: -0.4295311}
+  m_Size: {x: 10.212585, y: 7.5419464, z: 0.1409378}
 --- !u!1 &9080136307533867035
 GameObject:
   m_ObjectHideFlags: 0
