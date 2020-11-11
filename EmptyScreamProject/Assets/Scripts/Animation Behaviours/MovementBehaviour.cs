@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class MovementBehaviour : StateMachineBehaviour
 {
+    public delegate void OnStateAction();
+    public static OnStateAction OnStateStart;
+
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -41,7 +44,11 @@ public class MovementBehaviour : StateMachineBehaviour
         {
             syringe.canInject = true;
         }
-            
+        
+        if(OnStateStart != null)
+        {
+            OnStateStart();
+        }
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine

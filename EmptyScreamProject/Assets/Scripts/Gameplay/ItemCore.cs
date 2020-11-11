@@ -50,14 +50,17 @@ public class ItemCore : MonoBehaviour
 
     public void JumpAnimationEnd()
     {
-        if (isInAnimation || canUse)
+        if (!isInAnimation || canUse)
         {
             if (canUse)
             {
                 isInAnimation = false;
             }
-
-            animator.Play("JumpEnd", -1, 0f);
+            if(animator.enabled)
+            {
+                animator.Play("JumpEnd", -1, 0f);
+            }
+            
         }
     }
 

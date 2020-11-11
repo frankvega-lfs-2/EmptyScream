@@ -866,9 +866,6 @@ AnimatorTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Hide
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: stopMovementAnimation
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8286232920443205448}
   m_Solo: 0

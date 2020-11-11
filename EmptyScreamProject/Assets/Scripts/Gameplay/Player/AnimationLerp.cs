@@ -15,7 +15,7 @@ public class AnimationLerp : MonoBehaviour
 
     public Quaternion rotationOffset;
     private Quaternion newRotation;
-    private Quaternion finalRotation;
+    public Quaternion finalRotation;
     private Quaternion initialRotation;
     public bool lerpOnce;
 
@@ -44,7 +44,7 @@ public class AnimationLerp : MonoBehaviour
     {
         animationClip = objectAnimator.GetCurrentAnimatorClipInfo(0);
         initialRotation = currentCamera.transform.rotation;
-
+        finalRotation = currentCamera.transform.rotation;
         if (canChange)
         {
             newRotation = cameraRig.transform.rotation;

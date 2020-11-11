@@ -54,7 +54,7 @@ public class RunBehaviour : StateMachineBehaviour
     {
         ItemCore item = animator.gameObject.transform.parent.GetComponent<ItemCore>();
 
-        item.canUse = true;
+        //item.canUse = true;
 
        /* if (item.doOnce)
         {

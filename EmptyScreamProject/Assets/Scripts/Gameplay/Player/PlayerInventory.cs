@@ -53,6 +53,7 @@ public class PlayerInventory : MonoBehaviour
         ItemAnimation.OnReloadEnd += EnableItemChange;
         ItemAnimation.OnHitStart += DisableItemChange;
         ItemAnimation.OnHitEnd += EnableItemChange;
+        MovementBehaviour.OnStateStart += EnableItemChange;
 
         hotkeyItems = new GameObject[itemsParent.transform.childCount];
         items = new ItemCore[itemsParent.transform.childCount];
@@ -271,8 +272,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void EnableItemChange()
     {
-        //Debug.Log("FALSE");
-
         itemChangeFinished = true;
        // hotkeyItems[lastIndex].GetComponent<ItemCore>().canUse = true;
         items[lastIndex].canUse = true;
@@ -281,20 +280,7 @@ public class PlayerInventory : MonoBehaviour
             items[lastIndex].lerp.canChange = false;
             items[lastIndex].lerp.canLerp = true;
             items[lastIndex].lerp.lerpOnce = false;
-
-            /*if (items[lastIndex].itType == ItemCore.ItemType.NailGun)
-            {
-                items[lastIndex].lerp.canChange = false;
-                items[lastIndex].lerp.canLerp = true;
-            }*/
         }
-
-        
-       /* if (lerp)
-        {
-            lerp.canChange = false;
-            lerp.canLerp = true;
-        }*/
     }
 
     private void DisableItemChange()
@@ -396,5 +382,6 @@ public class PlayerInventory : MonoBehaviour
         ItemAnimation.OnReloadEnd -= EnableItemChange;
         ItemAnimation.OnHitStart -= DisableItemChange;
         ItemAnimation.OnHitEnd -= EnableItemChange;
+        MovementBehaviour.OnStateStart -= EnableItemChange;
     }
 }
