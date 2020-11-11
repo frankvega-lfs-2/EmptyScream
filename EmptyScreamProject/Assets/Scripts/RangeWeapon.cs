@@ -61,7 +61,15 @@ public class RangeWeapon : ItemCore
     private void Start()
     {
         lerp = GetComponent<AnimationLerp>();
-        clipBullets = clipMaxBullets;
+        if(amountLeft >= clipMaxBullets)
+        {
+            clipBullets = clipMaxBullets;
+        }
+        else
+        {
+            clipBullets = amountLeft;
+        }
+        
         shakeThing = gameObject.GetComponent<TraumaInducer>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         mesh.material.SetColor("_EmissiveColor", normalColor * normalIntensity);
