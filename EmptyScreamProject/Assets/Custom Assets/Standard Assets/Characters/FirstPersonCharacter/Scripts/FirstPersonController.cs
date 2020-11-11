@@ -295,6 +295,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
             }
+
+            if (m_IsCrouching)
+            {
+                newCameraPosition=new Vector3(0,crouchHeight,0);
+            }
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
