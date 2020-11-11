@@ -7,6 +7,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class UIFadeScreen : MonoBehaviour
 {
+    public delegate void OnFadeAction();
+    public static OnFadeAction OnGameEnd;
+
     public float alphaValueSpeed;
     public GameObject finishPanel;
     public GameObject startPanel;
@@ -92,6 +95,10 @@ public class UIFadeScreen : MonoBehaviour
         alphaValue = 0;
         canvas.alpha = alphaValue;
         player.GetComponent<FirstPersonController>().enabled = false;
+        if(OnGameEnd != null)
+        {
+            OnGameEnd();
+        }
     }
 
     public void StartFadeOut()

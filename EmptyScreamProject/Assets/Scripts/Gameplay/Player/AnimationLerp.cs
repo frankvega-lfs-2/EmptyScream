@@ -31,6 +31,7 @@ public class AnimationLerp : MonoBehaviour
         initialRotation = currentCamera.transform.rotation;
         //initialRotation *= rotationOffset;
         lerpOnce = true;
+        UIFadeScreen.OnGameEnd += DisableLerp;
     }
 
     // Update is called once per frame
@@ -90,5 +91,15 @@ public class AnimationLerp : MonoBehaviour
             
         }
 
+    }
+
+    public void DisableLerp()
+    {
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        UIFadeScreen.OnGameEnd -= DisableLerp;
     }
 }
