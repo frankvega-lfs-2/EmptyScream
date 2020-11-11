@@ -568,6 +568,7 @@ GameObject:
   - component: {fileID: 3088723074343779951}
   - component: {fileID: 4129233937285735197}
   - component: {fileID: 7223641055486890322}
+  - component: {fileID: 6331309323419531189}
   m_Layer: 0
   m_Name: puertaGrande_i
   m_TagString: Untagged
@@ -649,6 +650,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 170.62013, y: 283.78848, z: 22.533642}
   m_Center: {x: -69.11392, y: 126.54448, z: -47.440437}
+--- !u!208 &6331309323419531189
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085597697600268867}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 85.310005, y: 141.89401, z: 11.267}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -69.114006, y: 126.54401, z: -47.440002}
+  m_TimeToStationary: 0.5
 --- !u!1 &5807881565235398748
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +988,7 @@ GameObject:
   - component: {fileID: 3460064436028865965}
   - component: {fileID: 566602876029363860}
   - component: {fileID: 8141534941839393305}
+  - component: {fileID: 5646766922434684919}
   m_Layer: 0
   m_Name: puertaGrande_d
   m_TagString: Untagged
@@ -1052,6 +1070,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 155.57852, y: 283.78848, z: 22.533642}
   m_Center: {x: 75.32022, y: 126.54448, z: -47.440437}
+--- !u!208 &5646766922434684919
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7325720614592622326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 77.789, y: 141.89401, z: 11.267}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 75.32001, y: 126.54401, z: -47.440002}
+  m_TimeToStationary: 0.5
 --- !u!1 &7892100106699197656
 GameObject:
   m_ObjectHideFlags: 0
