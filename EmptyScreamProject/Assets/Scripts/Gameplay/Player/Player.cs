@@ -306,7 +306,9 @@ public class Player : MonoBehaviour
         GameManager.Get().restartTime = restartTime;
         GameManager.Get().restart = true;
         ragdoll.SetActive(true);
-        cam.transform.SetParent(headParent.transform);
+        cam.transform.SetParent(headParent.transform,false);
+        cam.transform.localPosition = Vector3.zero;
+        cam.transform.localRotation = Quaternion.Euler(Vector3.zero);
         GetComponent<FirstPersonController>().enabled = false;
         GetComponent<PlayerInventory>().itemsParent.SetActive(false);
         GetComponent<PlayerInventory>().enabled = false;
