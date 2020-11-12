@@ -192,7 +192,7 @@ public class RangeWeapon : ItemCore
         //muzzleFlash.Play();
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.transform.position + (cam.transform.forward * 0.5f), cam.transform.forward,out hit, range, mask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(cam.transform.position + (cam.transform.forward * 0.5f), cam.transform.forward,out hit, range, mask/*, QueryTriggerInteraction.Ignore*/))
         {
 
             GameObject impactGO;
