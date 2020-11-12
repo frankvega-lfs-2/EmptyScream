@@ -381,7 +381,8 @@ public class EnemyController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemiesAlertRadius, alertLayer);
         foreach (var hitCollider in hitColliders)
         {
-            hitCollider.GetComponent<EnemyController>().ChangeState(States.Follow);
+            if (hitCollider.gameObject.GetComponent<EnemyController>() != null)
+                hitCollider.GetComponent<EnemyController>().ChangeState(States.Follow);
         }
     }
 
