@@ -25,16 +25,18 @@ public class EnemySight : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            
             playerInSight = false;
 
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
+            //Debug.DrawRay(transform.position, direction.normalized * 10f, Color.green);
             if (angle < fovAngle * 0.5f)
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position, direction.normalized, out hit, detectionCol.radius * 1.2f, mask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(transform.position, direction, out hit, detectionCol.radius * 1.2f, mask, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.transform.gameObject.tag == "Player")
                     {
@@ -52,7 +54,10 @@ public class EnemySight : MonoBehaviour
                     lastPlayerPos = playerController.transform.position;
                 }
             }
+
         }
+
+        
     }
 
     private void OnTriggerExit(Collider other)

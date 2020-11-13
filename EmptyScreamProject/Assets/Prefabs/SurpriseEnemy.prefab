@@ -3322,6 +3322,7 @@ MonoBehaviour:
   idleTimer: 0
   rndIndex: 0
   previousIndex: 0
+  canAlarm: 1
 --- !u!195 &5390826358870642718
 NavMeshAgent:
   m_ObjectHideFlags: 0

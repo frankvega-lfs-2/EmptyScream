@@ -2636,7 +2636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4175396594523576179}
   m_LocalRotation: {x: -0, y: 0.08011454, z: -0, w: 0.99678576}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8974347883551318539}
@@ -3397,6 +3397,7 @@ MonoBehaviour:
   idleTimer: 0
   rndIndex: 0
   previousIndex: 0
+  canAlarm: 1
 --- !u!195 &5390826358870642718
 NavMeshAgent:
   m_ObjectHideFlags: 0

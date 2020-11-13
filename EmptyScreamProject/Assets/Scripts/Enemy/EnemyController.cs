@@ -71,6 +71,8 @@ public class EnemyController : MonoBehaviour
 
     public int rndIndex;
     public int previousIndex;
+
+    public bool canAlarm;
     // Start is called before the first frame update
     void Start()
     {
@@ -378,11 +380,14 @@ public class EnemyController : MonoBehaviour
 
     public void AlertEnemies()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemiesAlertRadius, alertLayer);
-        foreach (var hitCollider in hitColliders)
+        if (canAlarm)
         {
-            if (hitCollider.gameObject.GetComponent<EnemyController>() != null)
-                hitCollider.GetComponent<EnemyController>().ChangeState(States.Follow);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemiesAlertRadius, alertLayer);
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.gameObject.GetComponent<EnemyController>() != null)
+                    hitCollider.GetComponent<EnemyController>().ChangeState(States.Follow);
+            }
         }
     }
 
