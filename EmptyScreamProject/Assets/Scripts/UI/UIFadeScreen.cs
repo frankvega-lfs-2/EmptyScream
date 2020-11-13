@@ -32,6 +32,7 @@ public class UIFadeScreen : MonoBehaviour
         startPanel.SetActive(false);
         finishPanel.SetActive(false);
         StartFadeOut();
+        GetComponent<PauseMenu>().enabled = false;
     }
 
     // Update is called once per frame
@@ -55,6 +56,9 @@ public class UIFadeScreen : MonoBehaviour
             if (alphaValue >= 1)
             {
                 startPanel.SetActive(false);
+                GetComponent<PauseMenu>().isGamePaused = true;
+                GetComponent<PauseMenu>().SwitchPause();
+                GetComponent<PauseMenu>().enabled = false;
                 player.GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(false);
                 player.GetComponent<FirstPersonController>().enabled = false;
                 alphaValue = 1;
@@ -76,6 +80,7 @@ public class UIFadeScreen : MonoBehaviour
             {
                 player.GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(true);
                 player.GetComponent<FirstPersonController>().enabled = true;
+                GetComponent<PauseMenu>().enabled = true;
                 alphaValue = 0;
                 fadeOutFinish = true;
                 startPanel.SetActive(true);
