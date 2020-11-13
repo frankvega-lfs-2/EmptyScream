@@ -30,6 +30,7 @@ public class Door : Interactable
     public bool doOnce;
 
     public bool enemyInTrigger;
+    public bool wasEnemy;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -179,6 +180,7 @@ public class Door : Interactable
                                 animator.SetBool("Close", false);
                                 canInteract = false;
                                 isOpen = true;
+                                wasEnemy = false;
                             }
 
                         }
@@ -192,6 +194,7 @@ public class Door : Interactable
                                 animator.SetBool("Close", false);
                                 canInteract = false;
                                 isOpen = true;
+                                wasEnemy = true;
                             }
 
 
@@ -241,6 +244,7 @@ public class Door : Interactable
                                 animator.SetBool("Open", false);
                                 canInteract = false;
                                 isOpen = false;
+                                wasEnemy = false;
                             }
 
                         }
@@ -254,6 +258,7 @@ public class Door : Interactable
                                 animator.SetBool("Open", false);
                                 canInteract = false;
                                 isOpen = false;
+                                wasEnemy = true;
                             }
                         }
                         break;
@@ -292,11 +297,13 @@ public class Door : Interactable
 
     public void OpenPortal()
     {
-        if(occlusionPortal)
+
+        if (occlusionPortal)
         {
             occlusionPortal.open = true;
         }
-        
+
+
     }
 
     public void ClosePortal()
