@@ -9,7 +9,7 @@ public class EnemyDetection : MonoBehaviour
 
     bool doOnce;
 
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
         {
@@ -21,7 +21,7 @@ public class EnemyDetection : MonoBehaviour
             
         }
         
-    }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
@@ -29,9 +29,12 @@ public class EnemyDetection : MonoBehaviour
         {
             if (controller.currentState != EnemyController.States.Dead && controller.currentState != EnemyController.States.Stunned)
             {
-                doOnce = false;
-                controller.ChangeState(EnemyController.States.Idle);
-                controller.agent.isStopped = true;
+                if(controller.currentState == EnemyController.States.Follow)
+                {
+                    doOnce = false;
+                    controller.ChangeState(EnemyController.States.Idle);
+                    controller.agent.isStopped = true;
+                }
             }
         }
     }

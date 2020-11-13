@@ -194,6 +194,7 @@ public class Door : Interactable
                                 isOpen = true;
                             }
 
+
                         }
                         break;
                     default:
@@ -203,6 +204,22 @@ public class Door : Interactable
             else
             {
                 //Play Locked Sound
+                switch (GO.tag)
+                {
+                    case "enemy":
+                        {
+                            if(isLocked)
+                            {
+                                if(!GO.GetComponent<EnemyController>().sight.playerInSight)
+                                {
+                                    GO.GetComponent<EnemyController>().ChangeState(EnemyController.States.Idle);
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
             
         }

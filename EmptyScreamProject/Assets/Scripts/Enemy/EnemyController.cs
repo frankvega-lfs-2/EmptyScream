@@ -66,6 +66,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Wander Settings")]
     public Transform[] waypoints;
+    public Transform currentWaypoint;
     public float idleMaxTime;
     public float idleTimer;
 
@@ -158,7 +159,7 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
             case States.Wander:
-                if (agent.remainingDistance< 2f)
+                if (agent.remainingDistance< agent.stoppingDistance)
                 {
                     ChangeState(States.Idle);
                 }
@@ -216,7 +217,7 @@ public class EnemyController : MonoBehaviour
         //}
         //Debug.DrawRay(transform.position + (transform.up * 1.5f), transform.forward, Color.cyan,Time.deltaTime);
         AkSoundEngine.PostEvent("Attack_E", this.gameObject);
-        if (distance <= agent.stoppingDistance)
+        if (distance <= agent.stoppingDistance+0.5f)
         {
             player.ReceiveDamage(damage);
         }
@@ -272,6 +273,8 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", false);
                 animator.SetBool("Wander", false);
+                idleTimer = 0;
+                agent.isStopped = true;
                 break;
             case States.Follow:
                 ResumeNavMeshAgentSpeed();
@@ -279,6 +282,7 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("Follow", true);
                 animator.SetBool("Hit", false);
                 animator.SetBool("Wander", false);
+                agent.isStopped = false;
                 agent.SetDestination(target.position);
                 break;
             case States.Hit:
@@ -286,12 +290,14 @@ public class EnemyController : MonoBehaviour
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", true);
                 animator.SetBool("Wander", false);
+                agent.isStopped = true;
                 break;
             case States.Stunned:
                 animator.SetBool("Idle", false);
                 animator.SetBool("Follow", false);
                 animator.SetBool("Hit", false);
                 animator.SetBool("Wander", false);
+                agent.isStopped = true;
                 break;
             case States.Wander:
                 animator.SetBool("Idle", false);
@@ -301,6 +307,7 @@ public class EnemyController : MonoBehaviour
 
                 if (waypoints.Length>0)
                 {
+                    agent.isStopped = false;
                     agent.speed = 2;
                     agent.acceleration = 5;
                     previousIndex = rndIndex;
@@ -310,6 +317,7 @@ public class EnemyController : MonoBehaviour
                         rndIndex = UnityEngine.Random.Range(0, waypoints.Length);
                     }
                     agent.SetDestination(waypoints[rndIndex].position);
+                    currentWaypoint = waypoints[rndIndex].transform;
                 }
                 break;
             case States.Dead:
@@ -429,9 +437,19 @@ public class EnemyController : MonoBehaviour
 
         ragdoll.ragdolled = false;
 
-        ChangeState(States.Idle);
+        
         detectionCollider.enabled = true;
         instantKOCol.enabled = true;
+
+        if (sight.playerInSight || sight.playerHeard)
+        {
+            ChangeState(States.Follow);
+        }
+        else
+        {
+            ChangeState(States.Idle);
+        }
+
     }
 
     private void CreateBlood()

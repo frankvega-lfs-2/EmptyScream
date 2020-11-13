@@ -26,7 +26,7 @@ public class EnemySight : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             
-            playerInSight = false;
+            //playerInSight = false;
 
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
@@ -44,6 +44,10 @@ public class EnemySight : MonoBehaviour
                         lastPlayerPos = hit.transform.position;
                     }
                 }
+            }
+            else
+            {
+                playerInSight = false;
             }
 
             if (playerController.isRunning)
@@ -64,6 +68,7 @@ public class EnemySight : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("OFF");
             playerInSight = false;
             playerHeard = false;
         }

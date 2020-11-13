@@ -209,7 +209,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if(OnFPSJumpStart != null)
                     {
                         OnFPSJumpStart();
-                        Debug.Log("JUMPING");
+                        //Debug.Log("JUMPING");
                     }
                     m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();

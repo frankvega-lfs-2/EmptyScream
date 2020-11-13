@@ -49,10 +49,6 @@ public class JumpBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         ItemCore item = animator.gameObject.transform.parent.GetComponent<ItemCore>();
-
-        //item.canUse = true;
-
-        Debug.Log("asd");
         item.isInAnimation = false;
         item.lerp.canChange = false;
         item.lerp.lerpOnce = false;

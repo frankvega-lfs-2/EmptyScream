@@ -89,7 +89,6 @@ public class UIInventory : MonoBehaviour
         {
             if (i == (int)type)
             {
-                Debug.Log("modo messi");
                 Color newColor = new Vector4(slots[i].icon.color.r, slots[i].icon.color.g, slots[i].icon.color.b, 1);
                 slots[i].icon.color = newColor;
                 i = slots.Length;
