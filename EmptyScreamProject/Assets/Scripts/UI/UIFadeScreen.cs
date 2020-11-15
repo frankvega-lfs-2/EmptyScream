@@ -11,6 +11,8 @@ public class UIFadeScreen : MonoBehaviour
     public static OnFadeAction OnGameEnd;
 
     public float alphaValueSpeed;
+    public GameObject triggerHurtObject;
+    public UIManager uiManager;
     public GameObject finishPanel;
     public GameObject startPanel;
 
@@ -31,6 +33,8 @@ public class UIFadeScreen : MonoBehaviour
         canvas.gameObject.SetActive(false);
         startPanel.SetActive(false);
         finishPanel.SetActive(false);
+        triggerHurtObject.SetActive(false);
+        uiManager.enabled = false;
         StartFadeOut();
         GetComponent<PauseMenu>().enabled = false;
     }
@@ -59,6 +63,7 @@ public class UIFadeScreen : MonoBehaviour
                 GetComponent<PauseMenu>().isGamePaused = true;
                 GetComponent<PauseMenu>().SwitchPause();
                 GetComponent<PauseMenu>().enabled = false;
+                uiManager.enabled = false;
                 player.GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(false);
                 player.GetComponent<FirstPersonController>().enabled = false;
                 alphaValue = 1;
@@ -80,6 +85,9 @@ public class UIFadeScreen : MonoBehaviour
             {
                 player.GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(true);
                 player.GetComponent<FirstPersonController>().enabled = true;
+                
+                uiManager.enabled = true;
+                triggerHurtObject.SetActive(true);
                 GetComponent<PauseMenu>().enabled = true;
                 alphaValue = 0;
                 fadeOutFinish = true;

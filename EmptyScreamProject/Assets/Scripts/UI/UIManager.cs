@@ -58,6 +58,10 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            RestartTimer();
+        }
     }
 
     public void RestartTimer()

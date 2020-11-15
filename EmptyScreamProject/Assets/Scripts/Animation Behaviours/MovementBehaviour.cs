@@ -27,10 +27,14 @@ public class MovementBehaviour : StateMachineBehaviour
             item.runTriggerActivated = false;
         }
         item.isInAnimation = false;
-        item.lerp.canChange = true;
-        item.lerp.timer = 0;
-        item.lerp.lerpOnce = true;
-        item.lerp.canLerp = false;
+        if (item.lerp)
+        {
+            item.lerp.canChange = true;
+            item.lerp.timer = 0;
+            item.lerp.lerpOnce = true;
+            item.lerp.canLerp = false;
+        }
+            
         item.canUse = true;
         item.isInAnimation = false;
         item.player.isDoingAction = false;
@@ -87,10 +91,14 @@ public class MovementBehaviour : StateMachineBehaviour
             if(!item.doOnce)
             {
                 //item.isInAnimation = false;
-                item.lerp.canChange = true;
-                item.lerp.timer = 0;
-                item.lerp.lerpOnce = true;
-                item.lerp.canLerp = false;
+                if (item.lerp)
+                {
+                    item.lerp.canChange = true;
+                    item.lerp.timer = 0;
+                    item.lerp.lerpOnce = true;
+                    item.lerp.canLerp = false;
+                }
+                    
                 item.doOnce = true;
             }
         }
@@ -100,9 +108,13 @@ public class MovementBehaviour : StateMachineBehaviour
             //item.isInAnimation = false;
             if(!item.isInAnimation)
             {
-                item.lerp.canChange = false;
-                item.lerp.lerpOnce = false;
-                item.lerp.canLerp = true;
+                if (item.lerp)
+                {
+                    item.lerp.canChange = false;
+                    item.lerp.lerpOnce = false;
+                    item.lerp.canLerp = true;
+                }
+                    
                 item.doOnce = false;
             }
             

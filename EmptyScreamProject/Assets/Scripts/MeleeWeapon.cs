@@ -64,10 +64,14 @@ public class MeleeWeapon : ItemCore
                 canUse = false;
                 animator.SetBool("Block", true);
                 animator.SetBool("stopMovementAnimation", true);
-                lerp.canChange = true;
-                lerp.timer = 0;
-                lerp.lerpOnce = true;
-                lerp.canLerp = false;
+                if(lerp)
+                {
+                    lerp.canChange = true;
+                    lerp.timer = 0;
+                    lerp.lerpOnce = true;
+                    lerp.canLerp = false;
+                }
+                
             }
         }
 
@@ -79,9 +83,13 @@ public class MeleeWeapon : ItemCore
                 canUse = true;
                 animator.SetBool("Block", false);
                 animator.SetBool("stopMovementAnimation", false);
-                lerp.canChange = false;
-                lerp.lerpOnce = false;
-                lerp.canLerp = true;
+                if(lerp)
+                {
+                    lerp.canChange = false;
+                    lerp.lerpOnce = false;
+                    lerp.canLerp = true;
+                }
+                
             }
                 
         }

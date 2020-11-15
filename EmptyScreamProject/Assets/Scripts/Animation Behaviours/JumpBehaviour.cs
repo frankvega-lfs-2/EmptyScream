@@ -12,11 +12,15 @@ public class JumpBehaviour : StateMachineBehaviour
         item.lastRunState = !item.lastRunState;
         item.isInAnimation = true;
         item.canUse = false;
-        item.lerp.canChange = false;
-        item.lerp.timer = 0;
-        item.lerp.lerpOnce = false;
+        if(item.lerp)
+        {
+            item.lerp.canChange = false;
+            item.lerp.timer = 0;
+            item.lerp.lerpOnce = false;
+
+            item.lerp.canLerp = false;
+        }
         
-        item.lerp.canLerp = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -50,10 +54,14 @@ public class JumpBehaviour : StateMachineBehaviour
     {
         ItemCore item = animator.gameObject.transform.parent.GetComponent<ItemCore>();
         item.isInAnimation = false;
-        item.lerp.canChange = false;
-        item.lerp.lerpOnce = false;
-        item.lerp.canLerp = false;
-        item.lerp.timer = 0;
+        if (item.lerp)
+        {
+            item.lerp.canChange = false;
+            item.lerp.lerpOnce = false;
+            item.lerp.canLerp = false;
+            item.lerp.timer = 0;
+        }
+            
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

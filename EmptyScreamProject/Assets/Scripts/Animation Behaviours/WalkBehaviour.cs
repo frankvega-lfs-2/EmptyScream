@@ -10,10 +10,14 @@ public class WalkBehaviour : StateMachineBehaviour
         MeleeWeapon melee = animator.gameObject.transform.parent.GetComponent<MeleeWeapon>();
 
         //melee.animationEnded = false;
-        melee.lerp.canChange = true;
-        melee.lerp.timer = 0;
-        melee.lerp.lerpOnce = true;
-        melee.lerp.canLerp = false;
+        if (melee.lerp)
+        {
+            melee.lerp.canChange = true;
+            melee.lerp.timer = 0;
+            melee.lerp.lerpOnce = true;
+            melee.lerp.canLerp = false;
+        }
+            
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,9 +33,13 @@ public class WalkBehaviour : StateMachineBehaviour
 
         if (melee.doOnce)
         {
-            melee.lerp.canChange = false;
-            melee.lerp.lerpOnce = false;
-            melee.lerp.canLerp = true;
+            if (melee.lerp)
+            {
+                melee.lerp.canChange = false;
+                melee.lerp.lerpOnce = false;
+                melee.lerp.canLerp = true;
+            }
+                
         }
             
     }

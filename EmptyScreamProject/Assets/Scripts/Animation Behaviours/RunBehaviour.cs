@@ -12,10 +12,14 @@ public class RunBehaviour : StateMachineBehaviour
         // item.animationEnded = false;
         item.isInAnimation = true;
         item.canUse = false;
-        item.lerp.canChange = true;
-        item.lerp.timer = 0;
-        item.lerp.lerpOnce = true;
-        item.lerp.canLerp = false;
+        if (item.lerp)
+        {
+            item.lerp.canChange = true;
+            item.lerp.timer = 0;
+            item.lerp.lerpOnce = true;
+            item.lerp.canLerp = false;
+        }
+            
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -63,9 +67,13 @@ public class RunBehaviour : StateMachineBehaviour
         }*/
 
         item.isInAnimation = false;
-        item.lerp.canChange = false;
-        item.lerp.lerpOnce = false;
-        item.lerp.canLerp = true;
+        if (item.lerp)
+        {
+            item.lerp.canChange = false;
+            item.lerp.lerpOnce = false;
+            item.lerp.canLerp = true;
+        }
+            
 
     }
 
