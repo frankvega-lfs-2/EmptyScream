@@ -19,8 +19,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         UIInventory.OnUIActive += RestartTimer;
-        Player.OnPlayerHurt += RestartTimer;
-        Player.OnPlayerChangeHP2 += RestartTimer;
+        //Player.OnPlayerHurt += RestartTimer;
+        //Player.OnPlayerChangeHP2 += RestartTimer;
         canvasGroup.alpha = 0;
         RestartTimer();
     }
@@ -76,8 +76,8 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Player.OnPlayerHurt -= RestartTimer;
+        //Player.OnPlayerHurt -= RestartTimer;
         UIInventory.OnUIActive -= RestartTimer;
-        Player.OnPlayerChangeHP2 -= RestartTimer;
+        //Player.OnPlayerChangeHP2 -= RestartTimer;
     }
 }
