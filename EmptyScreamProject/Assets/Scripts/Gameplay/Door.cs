@@ -297,21 +297,22 @@ public class Door : Interactable
 
     public void OpenPortal()
     {
-
         if (occlusionPortal)
         {
             occlusionPortal.open = true;
         }
-
-
     }
 
     public void ClosePortal()
     {
-        if (occlusionPortal)
+        if(!wasEnemy)
         {
-            occlusionPortal.open = false;
+            if (occlusionPortal)
+            {
+                occlusionPortal.open = false;
+            }
         }
+        
     }
 
     public void PlayMechanicDoorSound()
