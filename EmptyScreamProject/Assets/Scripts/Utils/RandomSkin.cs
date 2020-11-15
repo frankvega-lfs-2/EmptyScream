@@ -21,10 +21,14 @@ public class RandomSkin : MonoBehaviour
         scarf.gameObject.SetActive(scarfBool);
         shirt.gameObject.SetActive(shirtBool);
 
-        if (scarfBool == false)
+        if(masks.Length > 0)
         {
-            masks[Random.Range(0, masks.Length)].SetActive(maskBool);
+            if (scarfBool == false)
+            {
+                masks[Random.Range(0, masks.Length)].SetActive(maskBool);
+            }
         }
+        
 
         scarf.material = scarfMats[Random.Range(0, scarfMats.Length)];
         shirt.material = shirtMats[Random.Range(0, shirtMats.Length)];
