@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public float firstIdleTime;
     public float idleTime;
     public float fadeSpeed;
 
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     public CanvasGroup canvasGroup;
 
+    private bool doOnce = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,11 +43,24 @@ public class UIManager : MonoBehaviour
         {
             idleTimer += Time.deltaTime;
 
-            if (idleTimer >= idleTime)
+            if(doOnce)
             {
-                idleTimer = 0;
-                canFadeOut = true;
+                if (idleTimer >= idleTime)
+                {
+                    idleTimer = 0;
+                    canFadeOut = true;
+                }
             }
+            else
+            {
+                if (idleTimer >= firstIdleTime)
+                {
+                    idleTimer = 0;
+                    canFadeOut = true;
+                    doOnce = true;
+                }
+            }
+            
         }
 
         if(canFadeIn)
