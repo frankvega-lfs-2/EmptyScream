@@ -115,27 +115,35 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                if (CanStandUp())
+                if(m_IsCrouching)
+                {
+                    if (CanStandUp())
+                    {
+                        m_IsCrouching = !m_IsCrouching;
+                        
+                        if (!m_IsCrouching)
+                        {
+                            if (OnFPSCrouchEnd != null)
+                            {
+                                OnFPSCrouchEnd();
+                            }
+                        }
+                        t = 0;
+                    }
+                }
+                else
                 {
                     m_IsCrouching = !m_IsCrouching;
 
-                    if(m_IsCrouching)
+                    if (m_IsCrouching)
                     {
                         if (OnFPSCrouchStart != null)
                         {
                             OnFPSCrouchStart();
                         }
                     }
-                    else
-                    {
-                        if (OnFPSCrouchEnd != null)
-                        {
-                            OnFPSCrouchEnd();
-                        }
-                    }
                     t = 0;
                 }
-                
             }
 
             CheckCrouch();

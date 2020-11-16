@@ -1299,7 +1299,7 @@ VisualEffectResource:
       capacity: 1
       stride: 4
     - type: 4
-      size: 100
+      size: 75
       layout: []
       capacity: 0
       stride: 4
@@ -1309,17 +1309,17 @@ VisualEffectResource:
       capacity: 0
       stride: 4
     - type: 4
-      size: 100
+      size: 75
       layout: []
       capacity: 0
       stride: 4
     - type: 0
-      size: 100
+      size: 75
       layout: []
       capacity: 0
       stride: 8
     - type: 0
-      size: 100
+      size: 75
       layout: []
       capacity: 0
       stride: 8
@@ -1400,7 +1400,7 @@ VisualEffectResource:
       shaderSourceIndex: -1
   - type: 1
     flags: 3
-    capacity: 100
+    capacity: 75
     layer: 4294967295
     buffers:
     - nameId: attributeBuffer
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614603}
   dataType: 0
-  capacity: 100
+  capacity: 75
   stripCapacity: 16
   particlePerStripCount: 16
   m_Space: 0
