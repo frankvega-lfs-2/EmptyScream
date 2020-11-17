@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RandomSkin : MonoBehaviour
 {
+    public MeshRenderer scarfMeshRenderer;
+    public MeshRenderer shirtMeshRenderer;
+    public MeshRenderer pantMeshRenderer;
     public SkinnedMeshRenderer scarf;
     public SkinnedMeshRenderer shirt;
     public SkinnedMeshRenderer pant;
@@ -18,10 +21,28 @@ public class RandomSkin : MonoBehaviour
         bool scarfBool = (Random.value > 0.5f);
         bool shirtBool = (Random.value > 0.5f);
         bool maskBool = (Random.value > 0.5f);
-        scarf.gameObject.SetActive(scarfBool);
-        shirt.gameObject.SetActive(shirtBool);
 
-        if(masks.Length > 0)
+        if (shirt)
+        {
+            shirt.gameObject.SetActive(shirtBool);
+        }
+
+        if (shirtMeshRenderer)
+        {
+            shirtMeshRenderer.gameObject.SetActive(shirtBool);
+        }
+
+        if (scarf)
+        {
+            scarf.gameObject.SetActive(scarfBool);
+        }
+
+        if (scarfMeshRenderer)
+        {
+            scarfMeshRenderer.gameObject.SetActive(scarfBool);
+        }
+
+        if (masks.Length > 0)
         {
             if (scarfBool == false)
             {
@@ -29,15 +50,37 @@ public class RandomSkin : MonoBehaviour
             }
         }
         
+        if(scarf)
+        {
+            scarf.material = scarfMats[Random.Range(0, scarfMats.Length)];
+        }
 
-        scarf.material = scarfMats[Random.Range(0, scarfMats.Length)];
-        shirt.material = shirtMats[Random.Range(0, shirtMats.Length)];
-        pant.material = pantMats[Random.Range(0, pantMats.Length)];
-    }
+        if(scarfMeshRenderer)
+        {
+            scarfMeshRenderer.material = scarfMats[Random.Range(0, scarfMats.Length)];
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (pant)
+        {
+            pant.material = pantMats[Random.Range(0, pantMats.Length)];
+        }
+
+        if (pantMeshRenderer)
+        {
+            pantMeshRenderer.material = pantMats[Random.Range(0, pantMats.Length)];
+        }
+
+        if (shirt)
+        {
+            shirt.material = shirtMats[Random.Range(0, shirtMats.Length)];
+        }
+
+        if (shirtMeshRenderer)
+        {
+            shirtMeshRenderer.material = shirtMats[Random.Range(0, shirtMats.Length)];
+        }
+        
+        
         
     }
 }

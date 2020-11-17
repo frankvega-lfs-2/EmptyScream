@@ -307,7 +307,7 @@ public class PlayerInventory : MonoBehaviour
 
                 if (items[i].amountLeft == 0)
                 {
-                    hotkeyItems[i].transform.GetChild(0).GetComponent<Animator>().Play("Reload", -1, 0f);
+                    //hotkeyItems[i].transform.GetChild(0).GetComponent<Animator>().Play("Reload", -1, 0f);
 
                     //items[lastIndex].animator.SetTrigger("Hide");
                 }

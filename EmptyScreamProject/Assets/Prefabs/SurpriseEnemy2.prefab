@@ -2028,6 +2028,36 @@ Transform:
   m_Father: {fileID: 953002107300411059}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5.428437, y: -1.1740204, z: -18.847893}
+--- !u!1 &2892399311308227530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410947949751353865}
+  m_Layer: 15
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410947949751353865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892399311308227530}
+  m_LocalRotation: {x: -0.035337266, y: 0.10141806, z: -0.009471764, w: 0.99417096}
+  m_LocalPosition: {x: 0.005, y: 0.005, z: 0.074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8895061390850080909}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -3.9190001, y: 11.701, z: -1.493}
 --- !u!1 &2896534042542425305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,6 +2090,7 @@ Transform:
   - {fileID: 482167112482659428}
   - {fileID: 6161854327872891372}
   - {fileID: 8888252884320781611}
+  - {fileID: 410947949751353865}
   m_Father: {fileID: 8974347883551318539}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 53.51245, y: 2.381199, z: 1.8984308}
@@ -2837,6 +2868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b2ad23f3f062b4f96d9b2c515ed7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scarfMeshRenderer: {fileID: 0}
+  shirtMeshRenderer: {fileID: 0}
+  pantMeshRenderer: {fileID: 0}
   scarf: {fileID: 1549286876320420509}
   shirt: {fileID: 5721454059050619304}
   pant: {fileID: 538814203898628721}
@@ -3369,7 +3403,7 @@ MonoBehaviour:
   lastState: 0
   bloodSplat: {fileID: 8559720990344066614, guid: 523be130463bf8e4b8845a8e9247eee4,
     type: 3}
-  bloodSplatPosition: {fileID: 8895061390850080909}
+  bloodSplatPosition: {fileID: 410947949751353865}
   agent: {fileID: 5390826358870642718}
   timer: 0
   deathTime: 15
