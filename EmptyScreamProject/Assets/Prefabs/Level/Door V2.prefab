@@ -697,7 +697,7 @@ Transform:
   m_LocalScale: {x: 1.472, y: 5.4377365, z: 1.3063861}
   m_Children: []
   m_Father: {fileID: 7555263672647645557}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6941852113882511945
 MeshFilter:
@@ -759,47 +759,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0486358, y: 0.092365414, z: 2.7802022}
   m_Center: {x: -0.024318129, y: 0.19946197, z: 0.7109802}
---- !u!1 &5824595203047243864
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2189137504495031807}
-  - component: {fileID: 3517991465445891958}
-  m_Layer: 0
-  m_Name: OC Portal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2189137504495031807
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824595203047243864}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.7071079}
-  m_LocalPosition: {x: 0.21, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7555263672647645557}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
---- !u!41 &3517991465445891958
-OcclusionPortal:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824595203047243864}
-  m_Open: 0
-  m_Center: {x: 0.5409622, y: 1.1299706, z: -0.4295311}
-  m_Size: {x: 10.212585, y: 7.5419464, z: 0.1409378}
 --- !u!1 &6369811476222224616
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +871,6 @@ Transform:
   - {fileID: 4319780986970118060}
   - {fileID: 6344296315992128107}
   - {fileID: 3288477139815554275}
-  - {fileID: 2189137504495031807}
   - {fileID: 557740257760321451}
   - {fileID: 9179022691997234726}
   m_Father: {fileID: 0}
@@ -968,7 +926,7 @@ MonoBehaviour:
   doorType: 1
   door: {fileID: 6810262455898704742}
   pickupsColliders: []
-  occlusionPortal: {fileID: 3517991465445891958}
+  occlusionPortal: {fileID: 0}
   isOpen: 0
   isLocked: 0
   doorTrigger: {fileID: 1727385205738413660}
@@ -976,6 +934,7 @@ MonoBehaviour:
   isInCombatRoom: 0
   doOnce: 0
   enemyInTrigger: 0
+  wasEnemy: 0
 --- !u!1 &7325720614592622326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,7 +1076,7 @@ Transform:
   m_LocalScale: {x: 1.472, y: 5.4377365, z: 1.3063861}
   m_Children: []
   m_Father: {fileID: 7555263672647645557}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7754602077346735655
 MeshFilter:
