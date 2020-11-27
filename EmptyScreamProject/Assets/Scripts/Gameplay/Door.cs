@@ -31,6 +31,14 @@ public class Door : Interactable
 
     public bool enemyInTrigger;
     public bool wasEnemy;
+
+    [Header("Hologram Settings"), Space]
+    public GameObject panelObject;
+    public GameObject unlockedScreen;
+    public GameObject lockedScreen;
+    public GameObject unlockedScreen2;
+    public GameObject lockedScreen2;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -72,6 +80,23 @@ public class Door : Interactable
         isInCombatRoom = false;
         cantEnemigos = 2;
         EnemyController.OnEnemyDeath += EnemyDied;
+        if(isLocked)
+        {
+            if(panelObject)
+            {
+                unlockedScreen.SetActive(false);
+                lockedScreen.SetActive(true);
+                unlockedScreen2.SetActive(false);
+                lockedScreen2.SetActive(true);
+            }
+        }
+        else
+        {
+            if(panelObject)
+            {
+                panelObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -131,6 +156,8 @@ public class Door : Interactable
                     }
                     else
                     {
+                        panelObject.SetActive(false);
+
                         animator.SetBool("Open", true);
                         animator.SetBool("Close", false);
                         canInteract = false;
@@ -181,6 +208,8 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = true;
                                 wasEnemy = false;
+                                if (panelObject)
+                                    panelObject.SetActive(false);
                             }
 
                         }
@@ -195,6 +224,8 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = true;
                                 wasEnemy = true;
+                                if (panelObject)
+                                    panelObject.SetActive(false);
                             }
 
 
@@ -245,6 +276,8 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = false;
                                 wasEnemy = false;
+                                if (panelObject)
+                                    panelObject.SetActive(true);
                             }
 
                         }
@@ -259,6 +292,8 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = false;
                                 wasEnemy = true;
+                                if(panelObject)
+                                panelObject.SetActive(true);
                             }
                         }
                         break;
@@ -334,6 +369,21 @@ public class Door : Interactable
     public void LockState(bool lockState)
     {
         isLocked = lockState;
+
+        if(isLocked)
+        {
+            unlockedScreen.SetActive(false);
+            lockedScreen.SetActive(true);
+            unlockedScreen2.SetActive(false);
+            lockedScreen2.SetActive(true);
+        }
+        else
+        {
+            unlockedScreen.SetActive(true);
+            lockedScreen.SetActive(false);
+            unlockedScreen2.SetActive(true);
+            lockedScreen2.SetActive(false);
+        }
     }
 
 
