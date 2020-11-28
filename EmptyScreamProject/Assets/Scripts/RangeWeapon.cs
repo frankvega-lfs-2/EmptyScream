@@ -7,6 +7,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class RangeWeapon : ItemCore
 {
+    public delegate void OnRangeWeaponAction(ItemType itemType);
+    public static OnRangeWeaponAction OnRangeWeaponFire;
+
     public enum WeaponType
     {
         Automatic,
@@ -234,6 +237,11 @@ public class RangeWeapon : ItemCore
             impactGO.transform.SetParent(hit.transform);
             impactGO.transform.position += (impactGO.transform.forward * -0.0001f);
             Destroy(impactGO, 15f);
+        }
+
+        if(OnRangeWeaponFire != null)
+        {
+            OnRangeWeaponFire(itType);
         }
     }
 

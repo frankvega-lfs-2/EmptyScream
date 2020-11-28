@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
     public static OnInventoryAction2 OnNewStackableItem;
     public static OnInventoryAction OnNoNewStackableItem;
     public static OnInventoryAction3 OnAmmoAdded;
+    public static OnItemPickupAction2 OnAmmoPickedUp;
     public static OnItemPickupAction OnItemAvailable;
     public static OnItemPickupAction OnItemNull;
     public static OnItemPickupAction2 OnItemPickedUp;
@@ -327,6 +328,13 @@ public class PlayerInventory : MonoBehaviour
                     if (OnMedkitPickedUp != null)
                     {
                         OnMedkitPickedUp(ItemCore.ItemType.Bandages);
+                    }
+                }
+                else if (items[i].ammoType == ItemPickup.PickupType.nails)
+                {
+                    if (OnAmmoPickedUp != null)
+                    {
+                        OnAmmoPickedUp(ItemCore.ItemType.NailGun);
                     }
                 }
 

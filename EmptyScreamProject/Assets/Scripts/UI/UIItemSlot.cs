@@ -10,6 +10,7 @@ public class UIItemSlot : MonoBehaviour
     public Image icon;
     public Button keyButton;
     public TextMeshProUGUI keyButtonText;
+    public TextMeshProUGUI amountLeftText;
 
     // Start is called before the first frame update
     void Start()

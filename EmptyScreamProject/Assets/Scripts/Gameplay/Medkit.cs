@@ -7,6 +7,7 @@ public class Medkit : ItemCore
 {
     public delegate void OnMedkitAction(ItemType type);
     public static OnMedkitAction OnMedkitEmpty;
+    public static OnMedkitAction OnMedkitUse;
 
     public int healthPointsToGive;
 
@@ -84,6 +85,10 @@ public class Medkit : ItemCore
         player.HealPlayer(healthPointsToGive);
         canHeal = true;
         player.isDoingAction = false;
+        if(OnMedkitUse != null)
+        {
+            OnMedkitUse(itType);
+        }
     }
 
     private void OnDestroy()

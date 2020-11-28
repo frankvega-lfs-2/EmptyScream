@@ -27,6 +27,14 @@ public class UIInventory : MonoBehaviour
         Medkit.OnMedkitEmpty += DeactivateIcon;
         PlayerInventory.OnSyringePickedUp += ActivateIcon;
         PlayerInventory.OnMedkitPickedUp += ActivateIcon;
+
+        RangeWeapon.OnRangeWeaponFire += UpdateAmountText;
+        Medkit.OnMedkitUse += UpdateAmountText;
+        Syringe.OnSyringeUse += UpdateAmountText;
+        PlayerInventory.OnSyringePickedUp += UpdateAmountText;
+        PlayerInventory.OnMedkitPickedUp += UpdateAmountText;
+        PlayerInventory.OnAmmoPickedUp += UpdateAmountText;
+
         inventory.OnInventoryChange += ActivateSlot;
 
         slots = new UIItemSlot[slotsParent.transform.childCount];
@@ -45,6 +53,17 @@ public class UIInventory : MonoBehaviour
     {
         
     }*/
+
+    public void UpdateAmountText(ItemCore.ItemType itemType)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if(inventory.items[i].itType == itemType)
+            {
+                slots[i].amountLeftText.text = inventory.items[i].amountLeft.ToString();
+            }
+        }
+    }
 
     public void ActivateSlot(int index)
     {
