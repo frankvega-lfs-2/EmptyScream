@@ -29,7 +29,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.75
-        value: {x: -37.7, y: 26.583221, z: 13.079445}
+        value: {x: -28.5, y: 26.583221, z: 13.079445}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -39,7 +39,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Puerta Chica/door_panel
+    path: Puerta Chica/door_panel_LOD0
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -54,7 +54,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.75
-        value: {x: 344.4, y: 26.583221, z: 13.079445}
+        value: {x: 335.9, y: 26.583221, z: 13.079445}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -64,7 +64,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Puerta Chica/door_panel2
+    path: Puerta Chica/door_panel2_LOD0
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -76,14 +76,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2276508707
+      path: 2860246219
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3090513851
+      path: 1046393558
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -125,7 +125,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: -37.7
+        value: -28.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -136,7 +136,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Puerta Chica/door_panel
+    path: Puerta Chica/door_panel_LOD0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -164,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Puerta Chica/door_panel
+    path: Puerta Chica/door_panel_LOD0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -192,7 +192,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Puerta Chica/door_panel
+    path: Puerta Chica/door_panel_LOD0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -209,7 +209,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.75
-        value: 344.4
+        value: 335.9
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -220,7 +220,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Puerta Chica/door_panel2
+    path: Puerta Chica/door_panel2_LOD0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -248,7 +248,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Puerta Chica/door_panel2
+    path: Puerta Chica/door_panel2_LOD0
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -276,7 +276,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Puerta Chica/door_panel2
+    path: Puerta Chica/door_panel2_LOD0
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []

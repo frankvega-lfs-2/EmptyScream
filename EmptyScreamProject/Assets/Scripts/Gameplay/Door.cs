@@ -33,6 +33,7 @@ public class Door : Interactable
     public bool wasEnemy;
 
     [Header("Hologram Settings"), Space]
+    public bool enableHologram;
     public GameObject panelObject;
     public GameObject unlockedScreen;
     public GameObject lockedScreen;
@@ -80,23 +81,34 @@ public class Door : Interactable
         isInCombatRoom = false;
         cantEnemigos = 2;
         EnemyController.OnEnemyDeath += EnemyDied;
-        if(isLocked)
+        
+
+        if (enableHologram)
         {
-            if(panelObject)
+            if (isLocked)
             {
-                unlockedScreen.SetActive(false);
-                lockedScreen.SetActive(true);
-                unlockedScreen2.SetActive(false);
-                lockedScreen2.SetActive(true);
+                if (panelObject)
+                {
+                    unlockedScreen.SetActive(false);
+                    lockedScreen.SetActive(true);
+                    unlockedScreen2.SetActive(false);
+                    lockedScreen2.SetActive(true);
+                }
+            }
+            else
+            {
+                if (panelObject)
+                {
+                    panelObject.SetActive(false);
+                }
             }
         }
         else
         {
-            if(panelObject)
-            {
+            if (panelObject)
                 panelObject.SetActive(false);
-            }
         }
+        
     }
 
     // Update is called once per frame
@@ -156,7 +168,12 @@ public class Door : Interactable
                     }
                     else
                     {
-                        panelObject.SetActive(false);
+                        if (enableHologram)
+                        {
+                            if(panelObject)
+                                panelObject.SetActive(false);
+                        }
+                        
 
                         animator.SetBool("Open", true);
                         animator.SetBool("Close", false);
@@ -208,8 +225,12 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = true;
                                 wasEnemy = false;
-                                if (panelObject)
-                                    panelObject.SetActive(false);
+                                if(enableHologram)
+                                {
+                                    if (panelObject)
+                                        panelObject.SetActive(false);
+                                }    
+                                
                             }
 
                         }
@@ -224,8 +245,12 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = true;
                                 wasEnemy = true;
-                                if (panelObject)
-                                    panelObject.SetActive(false);
+                                if (enableHologram)
+                                {
+                                    if (panelObject)
+                                        panelObject.SetActive(false);
+                                }
+                                
                             }
 
 
@@ -276,8 +301,12 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = false;
                                 wasEnemy = false;
-                                if (panelObject)
-                                    panelObject.SetActive(true);
+                                if (enableHologram)
+                                {
+                                    if (panelObject)
+                                        panelObject.SetActive(true);
+                                }
+                                
                             }
 
                         }
@@ -292,8 +321,12 @@ public class Door : Interactable
                                 canInteract = false;
                                 isOpen = false;
                                 wasEnemy = true;
-                                if(panelObject)
-                                panelObject.SetActive(true);
+                                if (enableHologram)
+                                {
+                                    if (panelObject)
+                                        panelObject.SetActive(true);
+                                }
+                                
                             }
                         }
                         break;
