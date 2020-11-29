@@ -60,7 +60,15 @@ public class UIInventory : MonoBehaviour
         {
             if(inventory.items[i].itType == itemType)
             {
-                slots[i].amountLeftText.text = inventory.items[i].amountLeft.ToString();
+                if(inventory.items[i].itType == ItemCore.ItemType.NailGun)
+                {
+                    slots[i].amountLeftText.text = "x" + (inventory.items[i].amountLeft + inventory.items[i].GetComponent<RangeWeapon>().clipBullets).ToString();
+                }
+                else
+                {
+                    slots[i].amountLeftText.text = "x" + inventory.items[i].amountLeft.ToString();
+                }
+                
             }
         }
     }
