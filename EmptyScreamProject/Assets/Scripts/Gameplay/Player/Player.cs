@@ -221,10 +221,16 @@ public class Player : MonoBehaviour
             OnPlayerChangeHP(health);
         }
 
-        if(OnPlayerHurt != null)
+
+        if(!isBlocking)
         {
-            OnPlayerHurt();
+            if (OnPlayerHurt != null)
+            {
+                OnPlayerHurt();
+            }
         }
+
+        
 
         StartCoroutine(screenShake.Shake());
     }
