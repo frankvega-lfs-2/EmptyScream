@@ -153,12 +153,12 @@ public class MeleeWeapon : ItemCore
             {
                 if (target.health >= 0)
                 {
-                    AkSoundEngine.PostEvent("Hit_E_Wrench", gameObject);
+                    AkSoundEngine.PostEvent("Wrench_attack", gameObject);
                 }
 
                 if (hit.transform.tag == "KO" && enemy.currentState != EnemyController.States.Follow && enemy.currentState != EnemyController.States.Hit)
                 {
-                    Debug.Log("Le pego en la nuca");
+                    //Debug.Log("Le pego en la nuca");
                     target.InstantStun();
                     target.TakeMeleeDamage(damage);
                 }
