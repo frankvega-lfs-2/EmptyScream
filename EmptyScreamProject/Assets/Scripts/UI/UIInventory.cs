@@ -46,6 +46,7 @@ public class UIInventory : MonoBehaviour
 
         GetHotkeyKeys();
         ActivateSlot(0);
+        Invoke("UpdateAllText", 0.5f);
     }
 
     /*// Update is called once per frame
@@ -53,6 +54,13 @@ public class UIInventory : MonoBehaviour
     {
         
     }*/
+
+    public void UpdateAllText()
+    {
+        UpdateAmountText(ItemCore.ItemType.NailGun);
+        UpdateAmountText(ItemCore.ItemType.Bandages);
+        UpdateAmountText(ItemCore.ItemType.Syringe);
+    }
 
     public void UpdateAmountText(ItemCore.ItemType itemType)
     {
