@@ -7,7 +7,7 @@ public class EnemyDetection : MonoBehaviour
     public EnemyController controller;
     public EnemySight sight;
 
-    bool doOnce;
+    public bool doOnce;
 
    /* private void OnTriggerEnter(Collider other)
     {
@@ -50,6 +50,7 @@ public class EnemyDetection : MonoBehaviour
                     doOnce = true;
                     controller.ChangeState(EnemyController.States.Follow);
                     controller.agent.isStopped = false;
+                    Debug.Log("Enemy Detection");
                 }
                 
             }

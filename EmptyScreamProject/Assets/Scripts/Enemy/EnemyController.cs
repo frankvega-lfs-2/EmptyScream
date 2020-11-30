@@ -74,6 +74,9 @@ public class EnemyController : MonoBehaviour
     public int previousIndex;
 
     public bool canAlarm;
+    public Vector3 originalKOPosition;
+    public Vector3 originalKOScale;
+    public Quaternion originalKORotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +94,11 @@ public class EnemyController : MonoBehaviour
         {
             Invoke("Stun", 1.0f);
         }
+
+        originalKOPosition = instantKOCol.gameObject.transform.localPosition;
+        originalKOScale = instantKOCol.gameObject.transform.localScale;
+        originalKORotation = instantKOCol.gameObject.transform.localRotation;
+
     }
 
     void Update()
@@ -143,6 +151,7 @@ public class EnemyController : MonoBehaviour
                         stunTimer = 0;
                         GetComponent<BoxCollider>().enabled = true;
                         stunIcon.SetActive(false);
+                        doOnce = false;
                         //ChangeState(States.Idle);
                     }
                 }
@@ -339,6 +348,7 @@ public class EnemyController : MonoBehaviour
 
         //GetComponent<Rigidbody>().isKinematic = !state;
         instantKORB.isKinematic = true;
+        //instantKOCol.gameObject.SetActive(false);
     }
 
 
@@ -425,6 +435,7 @@ public class EnemyController : MonoBehaviour
             }
 
             instantKORB.isKinematic = true;
+            
         }
     }
 
