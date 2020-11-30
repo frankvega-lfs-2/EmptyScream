@@ -405,10 +405,10 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log(currentState.ToString());
 
-            if (!isSurpriseEnemy)
-            {
-                AkSoundEngine.PostEvent("Hit_E_Wrench", this.gameObject);
-            }
+            //if (!isSurpriseEnemy)
+            //{
+            //    //AkSoundEngine.PostEvent("Hit_E_Wrench", this.gameObject);
+            //}
 
             SetRigidbodyState(false);
             SetColliderState(true);
