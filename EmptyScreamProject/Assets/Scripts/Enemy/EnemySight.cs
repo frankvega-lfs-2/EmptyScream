@@ -12,7 +12,8 @@ public class EnemySight : MonoBehaviour
     public LayerMask mask;
 
     public NavMeshAgent nav;
-    public SphereCollider detectionCol;
+    public SphereCollider detectionColRunning;
+    public float detectionRadiusWalking;
     public EnemyController enemyController;
     public UnityStandardAssets.Characters.FirstPerson.FirstPersonController playerController;
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class EnemySight : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position, direction, out hit, detectionCol.radius * 1.2f, mask, QueryTriggerInteraction.Ignore))
+                if (Physics.Raycast(transform.position, direction, out hit, detectionColRunning.radius * 1.2f, mask, QueryTriggerInteraction.Ignore))
                 {
                     if (hit.transform.gameObject.tag == "Player")
                     {
@@ -52,13 +53,21 @@ public class EnemySight : MonoBehaviour
 
             if (playerController.isRunning)
             {
-                if (CalculatePathLenght(playerController.transform.position)<=detectionCol.radius * 1.2f)
+                if (CalculatePathLenght(playerController.transform.position)<=detectionColRunning.radius * 1.2f)
                 {
                     playerHeard = true;
                     lastPlayerPos = playerController.transform.position;
                 }
             }
 
+            if (playerController.m_IsWalking && !playerController.m_IsCrouching)
+            {
+                if (CalculatePathLenght(playerController.transform.position) <= detectionRadiusWalking)
+                {
+                    playerHeard = true;
+                    lastPlayerPos = playerController.transform.position;
+                }
+            }
         }
 
         

@@ -270,16 +270,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
-            // pick & play a random footstep sound from the array,
-            // excluding sound at index 0
 
-            AkSoundEngine.PostEvent("player_step", gameObject);
-            //int n = Random.Range(1, m_FootstepSounds.Length);
-            //m_AudioSource.clip = m_FootstepSounds[n];
-            //m_AudioSource.PlayOneShot(m_AudioSource.clip);
-            //// move picked sound to index 0 so it's not picked next time
-            //m_FootstepSounds[n] = m_FootstepSounds[0];
-            //m_FootstepSounds[0] = m_AudioSource.clip;
+            if (m_IsCrouching)
+            {
+                AkSoundEngine.PostEvent("Steps_Low", gameObject);
+                return;
+            }
+
+            if (isRunning)
+                AkSoundEngine.PostEvent("player_step", gameObject);
+            else
+                AkSoundEngine.PostEvent("Steps_Medium", gameObject);
         }
 
 
