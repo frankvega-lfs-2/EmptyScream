@@ -4132,6 +4132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5390826358870642719}
   sight: {fileID: 2904742879069834976}
+  doOnce: 0
 --- !u!114 &2904742879069834976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4152,7 +4153,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   nav: {fileID: 5390826358870642718}
-  detectionCol: {fileID: 4175396594523576176}
+  detectionColRunning: {fileID: 6058470641880191863}
+  detectionRadiusWalking: 6
   enemyController: {fileID: 5390826358870642719}
   playerController: {fileID: 0}
 --- !u!1 &4175396594562878604
@@ -5261,6 +5263,9 @@ MonoBehaviour:
   rndIndex: 0
   previousIndex: 0
   canAlarm: 1
+  originalKOPosition: {x: 0, y: 0, z: 0}
+  originalKOScale: {x: 0, y: 0, z: 0}
+  originalKORotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!195 &5390826358870642718
 NavMeshAgent:
   m_ObjectHideFlags: 0
