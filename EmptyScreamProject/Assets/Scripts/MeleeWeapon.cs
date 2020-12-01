@@ -16,6 +16,7 @@ public class MeleeWeapon : ItemCore
     public Camera cam;
     public GameObject impact;
     public GameObject impactTarget;
+    public GameObject impactTargetSmall;
     public Texture2D[] decals;
     public LayerMask mask;
     public Color color;
@@ -151,7 +152,9 @@ public class MeleeWeapon : ItemCore
 
             if (target != null)
             {
-                if (target.health >= 0)
+                bool isStunned = false;
+
+                if (target.health > 0)
                 {
                     AkSoundEngine.PostEvent("Wrench_attack", gameObject);
                 }
@@ -161,13 +164,23 @@ public class MeleeWeapon : ItemCore
                     //Debug.Log("Le pego en la nuca");
                     target.InstantStun();
                     target.TakeMeleeDamage(damage);
+                    isStunned = true;
                 }
                 else
                 {
-                    target.TakeMeleeDamage(damage);
+                    isStunned = target.TakeMeleeDamage(damage);
                 }
                 int rand = Random.Range(0, decals.Length);
-                impactGO = Instantiate(impactTarget, hit.point, Quaternion.LookRotation(hit.normal));
+
+                if(target.health <= 0)
+                {
+                    impactGO = Instantiate(impactTarget, hit.point, Quaternion.LookRotation(hit.normal));
+                }
+                else if(!isStunned)
+                {
+                    impactGO = Instantiate(impactTargetSmall, hit.point, Quaternion.LookRotation(hit.normal));
+                }
+                
 
                 // SKINNED DECALS
                 SkinnedMeshRenderer[] r = hit.collider.transform.root.GetComponentsInChildren<SkinnedMeshRenderer>();

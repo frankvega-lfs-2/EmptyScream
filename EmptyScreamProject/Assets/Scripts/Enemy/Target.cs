@@ -30,8 +30,9 @@ public class Target : MonoBehaviour
         }
     }
 
-    public void TakeMeleeDamage(float damage)
+    public bool TakeMeleeDamage(float damage)
     {
+        bool result = false;
         health -= damage;
         if (enemyController.currentState != EnemyController.States.Stunned && enemyController.currentState != EnemyController.States.Dead)
         {
@@ -41,11 +42,14 @@ public class Target : MonoBehaviour
         if (health <= koHealth && health > 0)
         {
             Stun();
+            result = true;
         }
         if (health <= 0)
         {
             Die();
         }
+
+        return result;
     }
 
     public void Die()

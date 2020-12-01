@@ -38,6 +38,7 @@ public class RangeWeapon : ItemCore
     //public ParticleSystem muzzleFlash;
     public GameObject impact;
     public GameObject impactTarget;
+    public GameObject impactTargetSmall;
     public Texture2D[] decals;
     public Color color;
     public LayerMask mask;
@@ -214,7 +215,15 @@ public class RangeWeapon : ItemCore
                 }
                 target.TakeDamage(damage);
                 int rand = Random.Range(0, decals.Length);
-                impactGO = Instantiate(impactTarget, hit.point, Quaternion.LookRotation(hit.normal));
+
+                if (target.health <= 0)
+                {
+                    impactGO = Instantiate(impactTarget, hit.point, Quaternion.LookRotation(hit.normal));
+                }
+                else
+                {
+                    impactGO = Instantiate(impactTargetSmall, hit.point, Quaternion.LookRotation(hit.normal));
+                }
 
                 // SKINNED DECALS
                 SkinnedMeshRenderer[] r = hit.collider.transform.root.GetComponentsInChildren<SkinnedMeshRenderer>();

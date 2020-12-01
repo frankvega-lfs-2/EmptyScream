@@ -252,6 +252,16 @@ PrefabInstance:
       propertyPath: CollisionModule.enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4161391185377137071, guid: ffe3d5313802fae45be929f099f2c85c,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161391185377137071, guid: ffe3d5313802fae45be929f099f2c85c,
+        type: 3}
+      propertyPath: m_MinParticleSize
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe3d5313802fae45be929f099f2c85c, type: 3}
 --- !u!4 &8815477695816328170 stripped
