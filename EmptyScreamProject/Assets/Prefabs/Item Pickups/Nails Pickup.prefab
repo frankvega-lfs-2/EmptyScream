@@ -349,7 +349,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nail_Box_Low
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5551014577142218206, guid: 556f1c142db6b6440bfcf33437a64f80, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 556f1c142db6b6440bfcf33437a64f80, type: 3}
 --- !u!4 &4126369925378801083 stripped
 Transform:
