@@ -3965,6 +3965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5390826358870642719}
   sight: {fileID: 2904742879069834976}
+  doOnce: 0
 --- !u!114 &2904742879069834976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3985,7 +3986,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   nav: {fileID: 5390826358870642718}
-  detectionCol: {fileID: 4175396594523576176}
+  detectionColRunning: {fileID: 4175396594523576176}
+  detectionRadiusWalking: 6
   enemyController: {fileID: 5390826358870642719}
   playerController: {fileID: 0}
 --- !u!1 &4175396594562878604
@@ -5273,7 +5275,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390826358870642712}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2efa8fc617074104ba23e62e1d2dabd6, type: 3}
   m_Controller: {fileID: 9100000, guid: 60e6ba459314e9848990e91234a521d5, type: 2}
   m_CullingMode: 0
@@ -5324,13 +5326,18 @@ MonoBehaviour:
   fillBar: {fileID: 506824283}
   isSurpriseEnemy: 0
   activator: {fileID: 0}
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   currentWaypoint: {fileID: 0}
-  idleMaxTime: 0
+  idleMaxTime: 8
   idleTimer: 0
   rndIndex: 0
   previousIndex: 0
   canAlarm: 1
+  originalKOPosition: {x: 0, y: 0, z: 0}
+  originalKOScale: {x: 0, y: 0, z: 0}
+  originalKORotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!195 &5390826358870642718
 NavMeshAgent:
   m_ObjectHideFlags: 0
