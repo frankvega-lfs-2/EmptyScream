@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
         allStates
     }
 
+    public bool isGuard;
     public States currentState;
     public States lastState;
     private Animator animator;
@@ -82,7 +83,7 @@ public class EnemyController : MonoBehaviour
     {
         SetRigidbodyState(true);
         SetColliderState(true);
-        stunIcon.SetActive(false);
+        
         GetComponent<Animator>().enabled = true;
 
         target = GameManager.Get().playerGO.transform;
@@ -95,9 +96,14 @@ public class EnemyController : MonoBehaviour
             Invoke("Stun", 1.0f);
         }
 
-        originalKOPosition = instantKOCol.gameObject.transform.localPosition;
-        originalKOScale = instantKOCol.gameObject.transform.localScale;
-        originalKORotation = instantKOCol.gameObject.transform.localRotation;
+        if (!isGuard)
+        {
+            stunIcon.SetActive(false);
+            originalKOPosition = instantKOCol.gameObject.transform.localPosition;
+            originalKOScale = instantKOCol.gameObject.transform.localScale;
+            originalKORotation = instantKOCol.gameObject.transform.localRotation;
+        }
+        
 
     }
 
@@ -202,15 +208,33 @@ public class EnemyController : MonoBehaviour
         {
             ChangeState(States.Hit);
             agent.speed = 0;
-            agent.acceleration = 0;
+            agent.acceleration = 35;
+            agent.isStopped = true;
+            agent.ResetPath();
             doOnce2 = false;
         }
     }
 
     public void ResumeNavMeshAgentSpeed()
     {
-        agent.speed = 5;
-        agent.acceleration = 10;
+        if (isGuard)
+        {
+            agent.speed = 4;
+            agent.acceleration = 35;
+        }
+        else
+        {
+            agent.speed = 5;
+            agent.acceleration = 10;
+        }
+        agent.isStopped = false;
+    }
+
+    public void StopNavMeshAgent()
+    {
+        agent.speed = 0;
+        agent.acceleration = 0;
+        agent.isStopped = true;
     }
 
     public void DoDamage()
@@ -347,7 +371,11 @@ public class EnemyController : MonoBehaviour
         }
 
         //GetComponent<Rigidbody>().isKinematic = !state;
-        instantKORB.isKinematic = true;
+        if (!isGuard)
+        {
+            instantKORB.isKinematic = true;
+        }
+        
         //instantKOCol.gameObject.SetActive(false);
     }
 
@@ -376,7 +404,10 @@ public class EnemyController : MonoBehaviour
         stunIcon.SetActive(false);
         SetColliderState(true);
         agent.isStopped = true;
-        GetComponent<BoxCollider>().enabled = false;
+        if (!isGuard)
+        {
+            GetComponent<BoxCollider>().enabled = false;
+        }
         GetComponent<Animator>().enabled = false;
 
         ChangeState(States.Dead);
