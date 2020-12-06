@@ -19,6 +19,7 @@ public class TimedEvent : Interactable
     private bool isTimerEnabled;
     private float currentTimer;
     private Button button;
+    private bool doOnce;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -62,24 +63,34 @@ public class TimedEvent : Interactable
 
     private void ExecuteAction()
     {
-        if (canInteract)
+        if (!doOnce)
         {
-            if(!isTimerEnabled)
+            if (canInteract)
             {
-                canInteract = false;
-                button.onClick.Invoke();
+                if (!isTimerEnabled)
+                {
+                    canInteract = false;
+                    button.onClick.Invoke();
+                }
+
             }
-            
+            doOnce = true;
         }
+        
     }
 
     public void StartTimer()
     {
-        if (!isTimerEnabled)
+        if(!doOnce)
         {
-            currentTimer = timeForTrigger;
-            isTimerEnabled = true;
+            doOnce = true;
+            if (!isTimerEnabled)
+            {
+                currentTimer = timeForTrigger;
+                isTimerEnabled = true;
+            }
         }
+        
         
     }
 
