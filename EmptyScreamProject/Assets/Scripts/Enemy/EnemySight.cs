@@ -55,8 +55,16 @@ public class EnemySight : MonoBehaviour
             {
                 if (CalculatePathLenght(playerController.transform.position)<=detectionColRunning.radius * 1.2f)
                 {
-                    playerHeard = true;
-                    lastPlayerPos = playerController.transform.position;
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(transform.position, direction, out hit, detectionColRunning.radius * 1.2f, mask, QueryTriggerInteraction.Ignore))
+                    {
+                        if (hit.transform.gameObject.tag == "Player")
+                        {
+                            playerHeard = true;
+                            lastPlayerPos = playerController.transform.position;
+                        }
+                    }
                 }
             }
 
