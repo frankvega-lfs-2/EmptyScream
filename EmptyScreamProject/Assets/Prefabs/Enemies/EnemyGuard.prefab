@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ragdollToMecanimBlendTime: 0.5
+  cantWakeUp: 1
   anim: {fileID: 0}
 --- !u!114 &4854179799196877742
 MonoBehaviour:

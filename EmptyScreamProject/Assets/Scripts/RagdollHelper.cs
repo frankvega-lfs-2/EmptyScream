@@ -87,6 +87,8 @@ public class RagdollHelper : MonoBehaviour {
 	
 	//A helper variable to store the time when we transitioned from ragdolled to blendToAnim state
 	float ragdollingEndTime=-100;
+
+	public bool cantWakeUp;
 	
 	//Declare a class that will hold useful information for each body part
 	public class BodyPart
@@ -151,9 +153,13 @@ public class RagdollHelper : MonoBehaviour {
 	
 	void LateUpdate()
 	{
-		//Clear the get up animation controls so that we don't end up repeating the animations indefinitely
-		anim.SetBool("GetUpFromBelly",false);
-		anim.SetBool("GetUpFromBack",false);
+		if(!cantWakeUp)
+        {
+			//Clear the get up animation controls so that we don't end up repeating the animations indefinitely
+			anim.SetBool("GetUpFromBelly", false);
+			anim.SetBool("GetUpFromBack", false);
+		}
+		
 
 		//Blending from ragdoll back to animated
 		if (state==RagdollState.blendToAnim)

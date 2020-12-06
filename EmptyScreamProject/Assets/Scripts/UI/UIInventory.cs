@@ -150,6 +150,14 @@ public class UIInventory : MonoBehaviour
         Medkit.OnMedkitEmpty -= DeactivateIcon;
         PlayerInventory.OnSyringePickedUp -= ActivateIcon;
         PlayerInventory.OnMedkitPickedUp -= ActivateIcon;
+
+        RangeWeapon.OnRangeWeaponFire -= UpdateAmountText;
+        Medkit.OnMedkitUse -= UpdateAmountText;
+        Syringe.OnSyringeUse -= UpdateAmountText;
+        PlayerInventory.OnSyringePickedUp -= UpdateAmountText;
+        PlayerInventory.OnMedkitPickedUp -= UpdateAmountText;
+        PlayerInventory.OnAmmoPickedUp -= UpdateAmountText;
+
         inventory.OnInventoryChange -= ActivateSlot;
     }
 }
