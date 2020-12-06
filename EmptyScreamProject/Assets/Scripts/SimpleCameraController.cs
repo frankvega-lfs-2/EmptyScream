@@ -76,10 +76,26 @@ namespace UnityTemplateProjects
         [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
         public bool invertY = false;
 
+        public bool isPaused;
+
         void OnEnable()
         {
             m_TargetCameraState.SetFromTransform(transform);
             m_InterpolatingCameraState.SetFromTransform(transform);
+        }
+
+        public void PauseFreeCamera()
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 1;
+                isPaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+            }
         }
 
         Vector3 GetInputTranslationDirection()
@@ -157,6 +173,11 @@ namespace UnityTemplateProjects
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 translation *= 10.0f;
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                PauseFreeCamera();
             }
 
             // Modify movement by a boost factor (defined in Inspector and modified in play mode through the mouse scroll wheel)

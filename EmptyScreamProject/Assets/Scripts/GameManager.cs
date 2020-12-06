@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonobehaviourSingleton<GameManager>
 {
     public GameObject playerGO;
+    public GameObject freeCamera;
     public bool restart;
     public float restartTime;
     private float restartTimer;
@@ -26,6 +27,12 @@ public class GameManager : MonobehaviourSingleton<GameManager>
             {
                 RestartLevel();
             }
+        }
+
+        if (Input.GetKey(KeyCode.F12))
+        {
+            freeCamera.SetActive(!freeCamera.activeInHierarchy);
+            playerGO.SetActive(!playerGO.activeInHierarchy);
         }
     }
 
