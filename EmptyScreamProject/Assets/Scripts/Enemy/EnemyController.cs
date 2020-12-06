@@ -401,7 +401,11 @@ public class EnemyController : MonoBehaviour
         AkSoundEngine.PostEvent("Death_E", this.gameObject);
 
         SetRigidbodyState(false);
-        stunIcon.SetActive(false);
+        if(stunIcon)
+        {
+            stunIcon.SetActive(false);
+        }
+        
         SetColliderState(true);
         agent.isStopped = true;
         if (!isGuard)
