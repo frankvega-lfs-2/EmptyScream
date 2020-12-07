@@ -62,6 +62,8 @@ public class RangeWeapon : ItemCore
     private float nextFire;
     private bool doOnce2;
 
+    public PauseMenu pauseMenu;
+
     private void Start()
     {
         lerp = GetComponent<AnimationLerp>();
@@ -105,7 +107,7 @@ public class RangeWeapon : ItemCore
         bulletsDisplay.text = amountLeft.ToString();
         clipBulletsDisplay.text = clipBullets.ToString();
 
-        if (canUse)
+        if (canUse && !pauseMenu.isGamePaused)
         {
             if (isReloading)
             {
@@ -153,7 +155,7 @@ public class RangeWeapon : ItemCore
             }
             else if (type == WeaponType.SemiAutomatic)
             {
-                if (Input.GetMouseButtonDown(0) && clipBullets > 0)
+                if (Input.GetMouseButtonDown(0) && clipBullets > 0 )
                 {
                     if (clipBullets == 4)
                     {

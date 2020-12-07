@@ -26,6 +26,8 @@ public class MeleeWeapon : ItemCore
     public GameObject model;
     public bool hitTarget;
 
+    public PauseMenu pauseMenu;
+
     void Start()
     {
         lerp = GetComponent<AnimationLerp>();
@@ -47,7 +49,7 @@ public class MeleeWeapon : ItemCore
     // Update is called once per frame
     void Update()
     {
-        if(canUse)
+        if(canUse && !pauseMenu.isGamePaused)
         {
             if (Input.GetButtonDown("Fire1") && !isInAnimation && !isBlocking)
             {
