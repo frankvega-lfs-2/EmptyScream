@@ -31,8 +31,11 @@ public class GameManager : MonobehaviourSingleton<GameManager>
 
         if (Input.GetKey(KeyCode.F12))
         {
-            freeCamera.SetActive(!freeCamera.activeInHierarchy);
-            playerGO.SetActive(!playerGO.activeInHierarchy);
+            if(freeCamera)
+            {
+                freeCamera.SetActive(!freeCamera.activeInHierarchy);
+                playerGO.SetActive(!playerGO.activeInHierarchy);
+            }
         }
     }
 
